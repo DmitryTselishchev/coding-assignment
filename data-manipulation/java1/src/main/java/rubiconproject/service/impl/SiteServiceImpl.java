@@ -22,7 +22,7 @@ import java.util.List;
 public class SiteServiceImpl implements SiteService {
 
     final Logger logger = LoggerFactory.getLogger(SiteServiceImpl.class);
-    private KeywordService keywordService = new KeywordServiceImpl();
+    private KeywordService keywordService = new KeywordServiceImpl();// ideally should be injected with DI
 
     @Override
     public void fillKeywords(List<Site> sites) {
@@ -47,7 +47,11 @@ public class SiteServiceImpl implements SiteService {
         return siteReader.readSites(file);
     }
 
-
+    /**
+     * Returns special implementation of {@link SiteReader} depends of file dimension
+     * @param fileName
+     * @return {@link JSONSiteReader} or {@link CSVSiteReader}
+     */
     private static SiteReader getSiteReaderByFileName(String fileName) {
         if (fileName.toLowerCase().endsWith(".csv")) {
             return new CSVSiteReader();

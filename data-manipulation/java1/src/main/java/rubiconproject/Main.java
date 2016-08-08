@@ -34,11 +34,15 @@ public class Main {
         List<SiteCollection> siteCollections = new ArrayList<>(files.length);
         SiteService siteService = new SiteServiceImpl();
         for (File file : files) {
+            // read sites from file
             List<Site> sites = siteService.readSitesFromFile(file);
+            // fill keywords
             siteService.fillKeywords(sites);
             SiteCollection siteCollection = new SiteCollection(file.getName(), sites.toArray(new Site[sites.size()]));
+            // add collection of sites to result
             siteCollections.add(siteCollection);
         }
+        // write collections of sites to file
         siteService.writeSiteCollectionsInFile(siteCollections, new File(outputFile));
     }
 
