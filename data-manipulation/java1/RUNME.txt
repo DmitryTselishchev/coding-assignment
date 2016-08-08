@@ -1,0 +1,10 @@
+1. For build the application:
+    Windows: run "gradlew.bat assemble"
+    Unix: run "./gradlew assemble"
+2. For run the application:
+    Windows: run "gradlew.bat execute -Dexec.args="<pathToInputDirectory> <outputFile>""
+    Unix: run "./gradlew execute -Dexec.args="<pathToInputDirectory> <outputFile>""
+    Example for windows: "gradlew.bat execute -Dexec.args="C:/input/ C:/out.json""
+3. For run tests:
+    Windows: run "gradlew.bat test"
+    Unix: run "./gradlew test"
